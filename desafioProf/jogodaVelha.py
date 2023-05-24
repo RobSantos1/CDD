@@ -16,6 +16,37 @@ def interface():
                 print("O", end=" ")
         print()
 
+def verificar():
+    for i in range(3):
+        soma = matriz[i][0] + matriz[i][1] + matriz[i][2]
+        if soma == -3:
+            print(f"Parabéns {jogador2}, você ganhou o Jogo!")
+            break
+
+        elif soma == 3:
+            print(f"Parabéns {jogador1}, você ganhou o Jogo!")
+            break
+
+    for i in range(3):
+        soma = matriz[0][i] + matriz[1][i] + matriz[2][i]
+        if soma == -3:
+            print(f"Parabéns {jogador2}, você ganhou o Jogo!")
+            break
+
+        elif soma == 3:
+            print(f"Parabéns {jogador1}, você ganhou o Jogo!")
+            break
+
+    diagonal1 = matriz[0][0] + matriz[1][1] + matriz[2][2]
+    diagonal2 = matriz[0][2] + matriz[1][1] + matriz[2][0]
+
+    if diagonal1 == 3 or diagonal2 == 3:
+        print(f"Parabéns {jogador1}, você ganhou o Jogo!")
+        return 1
+
+    elif diagonal1 == -3 or diagonal2 == -3:
+        print(f"Parabéns {jogador2}, você ganhou o Jogo!")
+        return 1
 
 jogador1 = input("Qual seu nome? ")
 print(f"Bem vindo {jogador1}! Seu marcador é o X")
@@ -40,6 +71,8 @@ while jogada <= 9:
                             print("Tente dnv!")
         interface()
 
+    if verificar() == 1:
+        break
     if jogada % 2 == 0:
         selectlinha = int(input(f"{jogador2}, qual linha você deseja jogar ? "))
         selectcoluna = int(input("Qual a coluna você deseja jogar? "))
@@ -55,3 +88,5 @@ while jogada <= 9:
                         else:
                             print("Tente dnv!")
         interface()
+    if verificar() == 1:
+        break
